@@ -1,0 +1,3 @@
+         Height (ft)      Impact Speed (ft/s)
+                10.0                     25.4
+                20.0                     35.9
