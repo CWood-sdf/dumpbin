@@ -1,6 +1,4 @@
-#include <vector>
-#include <cmath>
-
+#include <fstream>
 void populate(double x[], double y[]) {
     // do yeet stuff
 }
@@ -17,6 +15,14 @@ double yInt(double x[], double y[]) {
 }
 
 int main() {
+    double x[1000] = {};
+    double y[1000] = {};
+    for (int i = 0; i < 1000; i++) {
+        x[i] = 10;
+        y[i] = -10;
+    }
+
+    populate(x, y);
 
     return 0;
 }
