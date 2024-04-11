@@ -38,7 +38,10 @@ void populate(double x[], double y[]) {
         }
     }
 }
-void multiply(double x[], double y[], double out[]) {
+void multiply(double x[], double y[], double out[], int size) {
+    for (int i = 0; i < size; i++) {
+        out[i] = x[i] * y[i];
+    }
 }
 
 void square(double arr[], double out[]) {
