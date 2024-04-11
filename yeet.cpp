@@ -1,14 +1,15 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+using namespace std;
 void populate(double x[], double y[]) {
     // do yeet stuff
-    std::ifstream file = std::ifstream("lin_reg.txt");
-    std::string val = "";
+    ifstream file = ifstream();
+    file.open("lin_reg.txt");
+    string val = "";
     int xIndex = 0;
     while (val[0] != 'Y') {
         file >> val;
-        std::cout << val << std::endl;
         if (val[0] == 'X') {
             continue;
         }
@@ -22,7 +23,6 @@ void populate(double x[], double y[]) {
     int yIndex = 0;
     while (val[0] != 'x') {
         file >> val;
-        std::cout << val << std::endl;
         if (val.size() == 0) {
             break;
         }
@@ -57,9 +57,9 @@ int main() {
     populate(x, y);
 
     for (int i = 0; x[i] < 5; i++) {
-        std::cout << "[" << x[i] << ", " << y[i] << "], ";
+        cout << "[" << x[i] << ", " << y[i] << "], ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     return 0;
 }
