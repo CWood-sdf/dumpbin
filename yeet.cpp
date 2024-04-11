@@ -6,6 +6,10 @@ void populate(double x[], double y[]) {
     // do yeet stuff
     ifstream file = ifstream();
     file.open("lin_reg.txt");
+    if (!file.is_open()) {
+        cout << "sdfsd" << endl;
+        return;
+    }
     string val = "";
     int xIndex = 0;
     while (val[0] != 'Y') {
