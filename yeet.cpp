@@ -44,7 +44,10 @@ void multiply(double x[], double y[], double out[], int size) {
     }
 }
 
-void square(double arr[], double out[]) {
+void square(double arr[], double out[], int size) {
+    for (int i = 0; i < size; i++) {
+        out[i] = arr[i] * arr[i];
+    }
 }
 double slope(double x[], double y[]) {
     return 0.0;
