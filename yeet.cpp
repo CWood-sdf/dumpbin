@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -49,11 +50,47 @@ void square(double arr[], double out[], int size) {
         out[i] = arr[i] * arr[i];
     }
 }
-double slope(double x[], double y[]) {
-    return 0.0;
+double slope(double x[], double y[], int size) {
+    double xMean = 0;
+    double yMean = 0;
+    for (int i = 0; i < size; i++) {
+        xMean += x[i];
+        yMean += y[i];
+    }
+    xMean /= size;
+    yMean /= size;
+    for (int i = 0; i < size; i++) {
+        x[i] -= xMean;
+        y[i] -= yMean;
+    }
+    double mult[1000] = {};
+    multiply(x, y, mult, size);
+    double squ[1000] = {};
+    square(x, squ, size);
+    // return the arrays to normal
+    for (int i = 0; i < size; i++) {
+        x[i] += xMean;
+        y[i] += yMean;
+    }
+    double squSum = 0;
+    double multSum = 0;
+    for (int i = 0; i < size; i++) {
+        squSum += squ[i];
+        multSum += mult[i];
+    }
+    return multSum / squSum;
 }
-double yInt(double x[], double y[]) {
-    return 0.0;
+double yInt(double x[], double y[], int size) {
+    double b = slope(x, y, size);
+    double xMean = 0;
+    double yMean = 0;
+    for (int i = 0; i < size; i++) {
+        xMean += x[i];
+        yMean += y[i];
+    }
+    xMean /= size;
+    yMean /= size;
+    return yMean - b * xMean;
 }
 
 int main() {
@@ -65,11 +102,13 @@ int main() {
     }
 
     populate(x, y);
-
-    for (int i = 0; x[i] < 5; i++) {
-        cout << "[" << x[i] << ", " << y[i] << "], ";
+    int size = 0;
+    while (x[size] < 5) {
+        size++;
     }
-    cout << endl;
+    double m = slope(x, y, size);
+    double b = yInt(x, y, size);
+    cout << "y = " << m << "x + " << b << endl;
 
     return 0;
 }
